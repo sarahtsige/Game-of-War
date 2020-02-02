@@ -5,7 +5,8 @@ console.log("hello!");
 	//take two arrays suits and rank and iterate through the loops to creat a deck
 	//and put them into "deck"
 
-	suit = ["club", "diamond", "spade", "heart"]
+	suit = ["clubs", "diamonds", "spades", "hearts"]
+	//rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 	value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 	let deck = [];
 
@@ -22,7 +23,7 @@ console.log("hello!");
 
 //Math.random => to shuffle cards
 
-//let shuffledDeck (Fisher-Yates Algorithm)
+//Shuffling the deck - (Fisher-Yates Algorithm)
 
 for(i = deck.length - 1; i > 0; i--) {
   j = Math.floor(Math.random() * i);
@@ -31,14 +32,13 @@ for(i = deck.length - 1; i > 0; i--) {
   deck[j] = temp;
 }
 
+
+//DEALING THE CARDS
 // The first player’s cards (let playerOneDeck = [])
 let playerOneDeck = []
-
-
 // The second player’s cards (let playerTwoDeck = [])
 let playerTwoDeck = []
 
-// Dealing the cards:
 // if index of card is even, push to playerTwo array, otherwise, push to playerOne
 
 function deal() {
@@ -71,8 +71,9 @@ deal()
 
 
 function cardTurn() {
-	gameBoard.push(playerOneDeck[i], playerTwoDeck[i])
-		console.log()
+	//gameBoard.push(playerOneDeck[i], playerTwoDeck[i])
+		console.log('Player1 has a ' + playerOneDeck[0].value + ' of ' + playerOneDeck[0].suit)
+		console.log('Player2 has a ' + playerTwoDeck[0].value + ' of ' + playerTwoDeck[0].suit)
 }
 
 
@@ -82,35 +83,60 @@ function cardTurn() {
 
 function round () {
  let loosersCard, winnersCard;
-    if (playerOneDeck[i] > playerTwoDeck[i]) {
+    if (playerOneDeck[i].value > playerTwoDeck[i].value) {
         loosersCard = playerTwoDeck.splice(0, 1);
         playerOneDeck.push(loosersCard[0]);
         winnersCard = playerOneDeck.splice(0, 1)
         playerOneDeck.push(winnersCard[0]);
+        console.log("Player 1 wins this round!")
     } else if (playerTwoDeck[i] > playerOneDeck[i]) {
         loosersCard = playerOneDeck.splice(0, 1);
         playerTwoDeck.push(loosersCard[0]);
         winnersCard = playerTwoDeck.splice(0, 1)
         playerTwoDeck.push(winnersCard[0]);
+        console.log("Player 2 wins this round!")
     } else {
         war()
 }
-}
-
-
-function war () {
-    if (playerOneDeck[3] > playerTwoDeck[3]) {
+	function war () {
+    if (playerOneDeck[3].value > playerTwoDeck[3].value) {
     	let warWinnersCards, warLoosersCards
         warLoosersCard = playerTwoDeck.splice(0, 4);
         playerOneDeck.push(warLoosersCard[0]);
         warWinnersCard = playerOneDeck.splice(0, 4)
         playerOneDeck.push(winnersCard[0]);
-    } else if (playerTwoDeck[i] > playerOneDeck[i]) {
+    } else //(playerTwoDeck[3].value > playerOneDeck[3].value) 
+    	{
         warLoosersCard = playerOneDeck.splice(0, 4);
         playerTwoDeck.push(warLoosersCard[0]);
         warWinnersCard = playerTwoDeck.splice(0, 4)
         playerTwoDeck.push(warWinnersCard[0]);
+	} //else {
+	}
 }
+
+
+
+
+
+
+// function war () {
+//     if (playerOneDeck[3].value > playerTwoDeck[3].value) {
+//     	let warWinnersCards, warLoosersCards
+//         warLoosersCard = playerTwoDeck.splice(0, 4);
+//         playerOneDeck.push(warLoosersCard[0]);
+//         warWinnersCard = playerOneDeck.splice(0, 4)
+//         playerOneDeck.push(winnersCard[0]);
+//     } else //(playerTwoDeck[3].value > playerOneDeck[3].value) 
+//     	{
+//         warLoosersCard = playerOneDeck.splice(0, 4);
+//         playerTwoDeck.push(warLoosersCard[0]);
+//         warWinnersCard = playerTwoDeck.splice(0, 4)
+//         playerTwoDeck.push(warWinnersCard[0]);
+// 	} //else {
+// 	}
+
+
 
 
 
