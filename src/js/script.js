@@ -10,7 +10,12 @@ console.log("hello!");
 	value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 	let deck = [];
 
+function startGame() {
+
+}
+
 //create the deck
+function buildDeck() {
 	for (i = 0; i < suit.length; i++){
 		for(j = 0; j < value.length; j++){
 			let card = {
@@ -18,6 +23,7 @@ console.log("hello!");
 				value: value[j]
 			}
 			deck.push(card)
+		}
 	}
 }
 
@@ -25,11 +31,13 @@ console.log("hello!");
 
 //Shuffling the deck - (Fisher-Yates Algorithm)
 
-for(i = deck.length - 1; i > 0; i--) {
-  j = Math.floor(Math.random() * i);
-  temp = deck[i];
-  deck[i] = deck[j];
-  deck[j] = temp;
+function shuffle () {
+	for(i = deck.length - 1; i > 0; i--) {
+  		j = Math.floor(Math.random() * i);
+  		temp = deck[i];
+  		deck[i] = deck[j];
+  		deck[j] = temp;
+	} 
 }
 
 
@@ -81,7 +89,7 @@ function cardTurn() {
 //if (p1 card value > p2 card value)  => push both cards to th end of p1deck array,  else if (p2 card value > p1) =>  push to end of Player 2 deck  else
 
 
-function round () {
+function round() {
  	cardTurn()	
  let loosersCard, winnersCard;
     if (playerOneDeck[0].value > playerTwoDeck[0].value) {
@@ -97,23 +105,25 @@ function round () {
         playerTwoDeck.push(winnersCard[0]);
         console.log("Player 2 wins this round! Player 1 has " + playerOneDeck.length  + "cards and Player 2 has "  + playerTwoDeck.length + " cards.")
     } else {
-        console.log("It's a tie....War is declared!!")
+        console.log("It's a tie....War has been declared!!")
         war()
 }
-	function war () {
+	function war() {
     if (playerOneDeck[3].value > playerTwoDeck[3].value) {
     	let warWinnersCards, warLoosersCards
         warLoosersCards = playerTwoDeck.splice(0, 4);
         playerOneDeck.push(...warLoosersCards);
         warWinnersCards = playerOneDeck.splice(0, 4)
         playerOneDeck.push(...warWinnersCards);
+        console.log("Player 1 wins this round! Player 1 has " + playerOneDeck.length  + "cards and Player 2 has "  + playerTwoDeck.length + " cards.")
     } else if (playerTwoDeck[3].value > playerOneDeck[3].value) 
-    	{
+    	{ 
         warLoosersCards = playerOneDeck.splice(0, 4);
         playerTwoDeck.push(warLoosersCards[0]);
         warWinnersCards = playerTwoDeck.splice(0, 4)
         playerTwoDeck.push(warWinnersCards[0]);
-	} else { console.log("It's another tie....War is declared again!!")
+        console.log("Player 1 wins this round! Player 1 has " + playerOneDeck.length  + "cards and Player 2 has "  + playerTwoDeck.length + " cards.")
+	} else { console.log("It's another tie....War has been declared again!!")
 	}
 
 }
