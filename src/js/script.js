@@ -82,8 +82,9 @@ function cardTurn() {
 
 
 function round () {
+ 	cardTurn()	
  let loosersCard, winnersCard;
-    if (playerOneDeck[i].value > playerTwoDeck[i].value) {
+    if (playerOneDeck[0].value > playerTwoDeck[0].value) {
         loosersCard = playerTwoDeck.splice(0, 1);
         playerOneDeck.push(loosersCard[0]);
         winnersCard = playerOneDeck.splice(0, 1)
@@ -96,22 +97,23 @@ function round () {
         playerTwoDeck.push(winnersCard[0]);
         console.log("Player 2 wins this round!")
     } else {
+        console.log("It's a tie....War is declared!!")
         war()
 }
 	function war () {
     if (playerOneDeck[3].value > playerTwoDeck[3].value) {
     	let warWinnersCards, warLoosersCards
         warLoosersCard = playerTwoDeck.splice(0, 4);
-        playerOneDeck.push(warLoosersCard[0]);
+        playerOneDeck.push(...warLoosersCard);
         warWinnersCard = playerOneDeck.splice(0, 4)
-        playerOneDeck.push(winnersCard[0]);
-    } else //(playerTwoDeck[3].value > playerOneDeck[3].value) 
+        playerOneDeck.push(...warWinnersCards);
+    } else if (playerTwoDeck[3].value > playerOneDeck[3].value) 
     	{
         warLoosersCard = playerOneDeck.splice(0, 4);
         playerTwoDeck.push(warLoosersCard[0]);
         warWinnersCard = playerTwoDeck.splice(0, 4)
         playerTwoDeck.push(warWinnersCard[0]);
-	} //else {
+	} else { console.log("It's another tie....War is declared again!!")
 	}
 }
 
