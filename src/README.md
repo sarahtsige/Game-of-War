@@ -33,5 +33,5 @@ there is another tie the process repeats until there is a winner.
 
 - Show a good commit history with frequent commits (We're looking for lots of
   
-## Limitations 
+## Requirements
 
