@@ -18,7 +18,8 @@ cards are dealt to the two players.  Each round begins when the players flip ove
 their top card. The player with the higher card, wins both cards.  If cards have equal
 value, then war is declared and each player must turn over the two more cards.  The
 player witht he higher number, wins the cards in plau  The game conintues
-until one winner has possession of all the cards.
+until one winner has possession of all the cards.  Results of each round are logged 
+to the console.
 
 ## Requirements
 
@@ -32,6 +33,10 @@ card again. Whoever wins out of the second reveal takes all of the cards, and if
 there is another tie the process repeats until there is a winner.
 
 - Show a good commit history with frequent commits (We're looking for lots of
-  
-## Requirements
+
+## Current Limitations
+
+Game rules do not address situations where war is declated and players to not have
+enough cards to complete the war.  Logic was added in this scenario to award the 
+remaining cards to the player who holds a majority of the cards.
 

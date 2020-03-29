@@ -31,7 +31,10 @@ top three cards of their stack face down, and then each player reveals the top
 card again. Whoever wins out of the second reveal takes all of the cards, and if
 there is another tie the process repeats until there is a winner.
 
-- Show a good commit history with frequent commits (We're looking for lots of
   
 ## Limitations 
+
+The scenario where there is a tie and not enough cards to go to war was resulting in an error.
+The logic was added to award the cards to the player with more cards and end the game in 
+cases where this occurs.
 
